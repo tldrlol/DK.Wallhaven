@@ -6,16 +6,16 @@
 
   [Flags]
   public enum Category {
-    General = 0b001,
+    General = 0b100,
     Anime   = 0b010,
-    People  = 0b100,
+    People  = 0b001,
   }
 
   [Flags]
   public enum Purity {
-    SFW     = 0b001,
+    SFW     = 0b100,
     Sketchy = 0b010,
-    NSFW    = 0b100,
+    NSFW    = 0b001,
   }
 
   public enum Sorting {
