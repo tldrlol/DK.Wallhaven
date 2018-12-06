@@ -1,5 +1,8 @@
 ﻿namespace DK.WallHaven.App {
 
+  using System;
+  using System.IO;
+  using System.Net.Http;
   using System.Windows;
 
   public partial class App : Application {
@@ -7,11 +10,21 @@
     protected override void OnStartup(StartupEventArgs e) {
       base.OnStartup(e);
 
-      var wallhavenClient = new Client(new System.Net.Http.HttpClient());
+      var config = Config.Generate(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
+      EnsureDirectoriesExist(config);
+
+      var wallhavenClient = new Client(new HttpClient());
 
       new MainWindow {
         DataContext = new MainViewModel(wallhavenClient),
       }.Show();
+    }
+
+    static void EnsureDirectoriesExist(Config config) {
+      foreach (var d in new[] { config.thumbnailDirectory, config.wallpaperDirectory })
+        Directory.CreateDirectory(d);
     }
 
   }
