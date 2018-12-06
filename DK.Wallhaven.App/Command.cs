@@ -16,6 +16,10 @@
 
     public bool CanExecute(object parameter) => CanExecute((T)parameter);
     public void Execute(object parameter) => Execute((T)parameter);
+
+    public void RaiseCanExecuteChanged() =>
+      this.CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+
   }
 
 }

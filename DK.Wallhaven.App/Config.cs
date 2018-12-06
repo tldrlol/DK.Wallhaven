@@ -10,12 +10,11 @@
     public Config(string thumbnailDirectory, string wallpaperDirectory) =>
       (this.thumbnailDirectory, this.wallpaperDirectory) = (thumbnailDirectory, wallpaperDirectory);
 
-    public static Config Generate(string rootDirectory) {
-      return new Config
+    public static Config Generate(string rootDirectory) =>
+      new Config
         ( thumbnailDirectory: Path.Combine(rootDirectory, "DK.Wallhaven", "Thumbnails")
         , wallpaperDirectory: Path.Combine(rootDirectory, "DK.Wallhaven", "Wallpapers")
         );
-    }
   }
 
 }

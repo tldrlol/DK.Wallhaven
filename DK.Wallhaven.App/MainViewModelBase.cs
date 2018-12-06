@@ -57,6 +57,18 @@
       set => this.CascadingSet(ref this.nsfw, value, new[] { nameof(this.Purity) });
     }
 
+    Sorting sortBy = Sorting.Relevance;
+    public Sorting SortBy {
+      get => this.sortBy;
+      set => this.Set(ref this.sortBy, value);
+    }
+
+    Order order = Order.Descending;
+    public Order Order {
+      get => this.order;
+      set => this.Set(ref this.order, value);
+    }
+
     ICommand searchCommand;
     public ICommand SearchCommand {
       get => this.searchCommand;

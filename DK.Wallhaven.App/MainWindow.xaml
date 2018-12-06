@@ -4,6 +4,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:DK.Wallhaven.App"
+  xmlns:wh="clr-namespace:DK.Wallhaven;assembly=DK.Wallhaven"
 
   mc:Ignorable="d"
   x:Class="DK.Wallhaven.App.MainWindow"
@@ -11,6 +12,11 @@
   Height="450"
   Width="800"
   d:DataContext="{d:DesignInstance d:Type=local:MainViewModelBase, IsDesignTimeCreatable=True}">
+
+  <Window.Resources>
+    <local:SortingDisplayConverter x:Key="SortingDisplayConverter"/>
+    <local:OrderDisplayConverter x:Key="OrderDisplayConverter"/>
+  </Window.Resources>
 
   <Grid>
 
@@ -21,51 +27,84 @@
     </Grid.ColumnDefinitions>
 
     <StackPanel Grid.Column="0"
-          Margin="10">
+      Margin="10">
 
       <StackPanel Orientation="Horizontal">
-        <Label VerticalAlignment="Center">Query:</Label>
-        <TextBox VerticalAlignment="Center" Width="250" Text="{Binding SearchQuery}" Padding="3"/>
+        <Label
+          VerticalAlignment="Center"
+          Target="{Binding ElementName=QueryBox}">
+          _Query:
+        </Label>
+
+        <TextBox
+          Name="QueryBox"
+          VerticalAlignment="Center"
+          Width="250"
+          Padding="3"
+          Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" />
       </StackPanel>
 
       <GroupBox Header="Categories" Padding="10" Margin="0 10 0 0">
-        <Grid >
+        <Grid>
+
           <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
           </Grid.ColumnDefinitions>
+
           <CheckBox Grid.Column="0" IsChecked="{Binding General}">General</CheckBox>
           <CheckBox Grid.Column="1" IsChecked="{Binding Anime}">Anime</CheckBox>
           <CheckBox Grid.Column="2" IsChecked="{Binding People}">People</CheckBox>
+
         </Grid>
       </GroupBox>
 
       <GroupBox Header="Purity" Padding="10" Margin="0 10 0 0">
         <Grid>
+
           <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
           </Grid.ColumnDefinitions>
+
           <CheckBox Grid.Column="0" IsChecked="{Binding SFW}">SFW</CheckBox>
           <CheckBox Grid.Column="1" IsChecked="{Binding Sketchy}">Sketchy</CheckBox>
-          <CheckBox Grid.Column="2" IsChecked="{Binding NSFW}">NSFW</CheckBox>
+          <CheckBox Grid.Column="2" IsChecked="{Binding NSFW}" IsEnabled="False">NSFW</CheckBox>
         </Grid>
       </GroupBox>
 
-      <ComboBox Margin="0 10 0 0">
-        <ComboBoxItem IsSelected="True">Relevance</ComboBoxItem>
-        <ComboBoxItem>Random</ComboBoxItem>
-        <ComboBoxItem>Date Added</ComboBoxItem>
-        <ComboBoxItem>Views</ComboBoxItem>
-        <ComboBoxItem>Favorites</ComboBoxItem>
-        <ComboBoxItem>Top List</ComboBoxItem>
+      <ComboBox
+        Margin="0 10 0 0"
+        SelectedItem="{Binding SortBy}">
+
+        <ComboBox.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding Converter={StaticResource SortingDisplayConverter}}" />
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+
+        <wh:Sorting>Relevance</wh:Sorting>
+        <wh:Sorting>Random</wh:Sorting>
+        <wh:Sorting>DateAdded</wh:Sorting>
+        <wh:Sorting>Views</wh:Sorting>
+        <wh:Sorting>Favorites</wh:Sorting>
+        <wh:Sorting>TopList</wh:Sorting>
       </ComboBox>
 
-      <ComboBox Margin="0 10 0 0">
-        <ComboBoxItem IsSelected="True">Descending</ComboBoxItem>
-        <ComboBoxItem>Ascending</ComboBoxItem>
+      <ComboBox
+        Margin="0 10 0 0"
+        SelectedItem="{Binding Order}">
+
+        <ComboBox.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding Converter={StaticResource OrderDisplayConverter}}" />
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+
+        <wh:Order>Descending</wh:Order>
+        <wh:Order>Ascending</wh:Order>
       </ComboBox>
 
       <Button
@@ -73,7 +112,9 @@
         Height="28"
         Command="{Binding SearchCommand}"
         CommandParameter="{Binding SearchQuery}">
-        Search
+        <AccessText>
+          _Search
+        </AccessText>
       </Button>
 
     </StackPanel>
