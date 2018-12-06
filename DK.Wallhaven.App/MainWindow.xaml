@@ -32,89 +32,96 @@
       <StackPanel Orientation="Horizontal">
         <Label
           VerticalAlignment="Center"
-          Target="{Binding ElementName=QueryBox}">
+          Target="{Binding ElementName=Query}">
           _Query:
         </Label>
 
         <TextBox
-          Name="QueryBox"
+          Name="Query"
           VerticalAlignment="Center"
           Width="250"
           Padding="3"
           Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" />
       </StackPanel>
 
-      <GroupBox Header="Categories" Padding="10" Margin="0 10 0 0">
+      <GroupBox Header="_Categories" Padding="10" Margin="0 10 0 0">
         <Grid>
-
           <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
           </Grid.ColumnDefinitions>
-
           <CheckBox Grid.Column="0" IsChecked="{Binding General}">General</CheckBox>
           <CheckBox Grid.Column="1" IsChecked="{Binding Anime}">Anime</CheckBox>
           <CheckBox Grid.Column="2" IsChecked="{Binding People}">People</CheckBox>
-
         </Grid>
       </GroupBox>
 
-      <GroupBox Header="Purity" Padding="10" Margin="0 10 0 0">
+      <GroupBox Header="_Purity" Padding="10" Margin="0 10 0 0">
         <Grid>
-
           <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
           </Grid.ColumnDefinitions>
-
           <CheckBox Grid.Column="0" IsChecked="{Binding SFW}">SFW</CheckBox>
           <CheckBox Grid.Column="1" IsChecked="{Binding Sketchy}">Sketchy</CheckBox>
           <CheckBox Grid.Column="2" IsChecked="{Binding NSFW}" IsEnabled="False">NSFW</CheckBox>
         </Grid>
       </GroupBox>
 
-      <ComboBox
-        Margin="0 10 0 0"
-        SelectedItem="{Binding SortBy}">
+      <Grid Margin="0 10 0 0">
 
-        <ComboBox.ItemTemplate>
-          <DataTemplate>
-            <TextBlock Text="{Binding Converter={StaticResource SortingDisplayConverter}}" />
-          </DataTemplate>
-        </ComboBox.ItemTemplate>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-        <wh:Sorting>Relevance</wh:Sorting>
-        <wh:Sorting>Random</wh:Sorting>
-        <wh:Sorting>DateAdded</wh:Sorting>
-        <wh:Sorting>Views</wh:Sorting>
-        <wh:Sorting>Favorites</wh:Sorting>
-        <wh:Sorting>TopList</wh:Sorting>
-      </ComboBox>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition Height="10"/>
+          <RowDefinition />
+        </Grid.RowDefinitions>
 
-      <ComboBox
-        Margin="0 10 0 0"
-        SelectedItem="{Binding Order}">
+        <Label Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=SortBy}">S_ort by:</Label>
+        <ComboBox Grid.Row="0" Grid.Column="1"
+          Name="SortBy"
+          VerticalAlignment="Center"
+          SelectedItem="{Binding SortBy}">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Converter={StaticResource SortingDisplayConverter}}" />
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+          <wh:Sorting>Relevance</wh:Sorting>
+          <wh:Sorting>Random</wh:Sorting>
+          <wh:Sorting>DateAdded</wh:Sorting>
+          <wh:Sorting>Views</wh:Sorting>
+          <wh:Sorting>Favorites</wh:Sorting>
+          <wh:Sorting>TopList</wh:Sorting>
+        </ComboBox>
 
-        <ComboBox.ItemTemplate>
-          <DataTemplate>
-            <TextBlock Text="{Binding Converter={StaticResource OrderDisplayConverter}}" />
-          </DataTemplate>
-        </ComboBox.ItemTemplate>
-
-        <wh:Order>Descending</wh:Order>
-        <wh:Order>Ascending</wh:Order>
-      </ComboBox>
+        <Label Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=Order}">O_rder:</Label>
+        <ComboBox Grid.Row="2" Grid.Column="1"
+          Name="Order"
+          VerticalAlignment="Center"
+          SelectedItem="{Binding Order}">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Converter={StaticResource OrderDisplayConverter}}" />
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+          <wh:Order>Descending</wh:Order>
+          <wh:Order>Ascending</wh:Order>
+        </ComboBox>
+      </Grid>
 
       <Button
         Margin="0 20 0 0"
         Height="28"
         Command="{Binding SearchCommand}"
         CommandParameter="{Binding SearchQuery}">
-        <AccessText>
-          _Search
-        </AccessText>
+        _Search
       </Button>
 
     </StackPanel>
