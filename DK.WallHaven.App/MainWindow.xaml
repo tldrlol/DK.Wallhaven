@@ -20,35 +20,63 @@
       <ColumnDefinition />
     </Grid.ColumnDefinitions>
 
-    <Grid Grid.Column="0"
+    <StackPanel Grid.Column="0"
           Margin="10">
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="auto" />
-        <RowDefinition Height="auto" />
-      </Grid.RowDefinitions>
+      <StackPanel Orientation="Horizontal">
+        <Label VerticalAlignment="Center">Query:</Label>
+        <TextBox VerticalAlignment="Center" Width="250" Text="{Binding SearchQuery}" Padding="3"/>
+      </StackPanel>
 
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="auto" />
-        <ColumnDefinition Width="200" />
-      </Grid.ColumnDefinitions>
+      <GroupBox Header="Categories" Padding="10" Margin="0 10 0 0">
+        <Grid >
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+          <CheckBox Grid.Column="0">General</CheckBox>
+          <CheckBox Grid.Column="1">Anime</CheckBox>
+          <CheckBox Grid.Column="2">People</CheckBox>
+        </Grid>
+      </GroupBox>
 
-      <Label Grid.Row="0" Grid.Column="0"
-        VerticalAlignment="Center">
-        Query:
-      </Label>
+      <GroupBox Header="Purity" Padding="10" Margin="0 10 0 0">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+          <CheckBox Grid.Column="0">SFW</CheckBox>
+          <CheckBox Grid.Column="1">Sketchy</CheckBox>
+          <CheckBox Grid.Column="2">NSFW</CheckBox>
+        </Grid>
+      </GroupBox>
 
-      <TextBox Grid.Row="0" Grid.Column="1"
-        VerticalAlignment="Center"
-        Text="{Binding SearchQuery}" />
+      <ComboBox Margin="0 10 0 0">
+        <ComboBoxItem IsSelected="True">Relevance</ComboBoxItem>
+        <ComboBoxItem>Random</ComboBoxItem>
+        <ComboBoxItem>Date Added</ComboBoxItem>
+        <ComboBoxItem>Views</ComboBoxItem>
+        <ComboBoxItem>Favorites</ComboBoxItem>
+        <ComboBoxItem>Top List</ComboBoxItem>
+      </ComboBox>
 
-      <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+      <ComboBox Margin="0 10 0 0">
+        <ComboBoxItem IsSelected="True">Descending</ComboBoxItem>
+        <ComboBoxItem>Ascending</ComboBoxItem>
+      </ComboBox>
+
+      <Button
+        Margin="0 20 0 0"
+        Height="28"
         Command="{Binding SearchCommand}"
         CommandParameter="{Binding SearchQuery}">
         Search
       </Button>
 
-    </Grid> 
+    </StackPanel>
 
     <Border Grid.Column="1"
       BorderBrush="black"
