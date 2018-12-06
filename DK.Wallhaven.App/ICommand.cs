@@ -1,4 +1,4 @@
-﻿namespace DK.WallHaven.App {
+﻿namespace DK.Wallhaven.App {
 
   using System.Windows.Input;
 

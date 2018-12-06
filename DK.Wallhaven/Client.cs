@@ -1,4 +1,4 @@
-﻿namespace DK.WallHaven {
+﻿namespace DK.Wallhaven {
 
   using System.IO;
   using System.Linq;

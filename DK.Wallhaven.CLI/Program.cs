@@ -1,4 +1,4 @@
-﻿namespace DK.WallHaven.CLI {
+﻿namespace DK.Wallhaven.CLI {
 
   using System;
   using System.Net.Http;

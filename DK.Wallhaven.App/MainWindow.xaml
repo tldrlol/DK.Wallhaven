@@ -3,11 +3,11 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:local="clr-namespace:DK.WallHaven.App"
+  xmlns:local="clr-namespace:DK.Wallhaven.App"
 
   mc:Ignorable="d"
-  x:Class="DK.WallHaven.App.MainWindow"
-  Title="WallHaven DL"
+  x:Class="DK.Wallhaven.App.MainWindow"
+  Title="Wallhaven DL"
   Height="450"
   Width="800"
   d:DataContext="{d:DesignInstance d:Type=local:MainViewModelBase, IsDesignTimeCreatable=True}">

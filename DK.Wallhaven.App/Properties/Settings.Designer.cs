@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DK.WallHaven.App.Properties {
+namespace DK.Wallhaven.App.Properties {
 
 
   [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

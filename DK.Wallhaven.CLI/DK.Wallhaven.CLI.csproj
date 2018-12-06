@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DK.WallHaven\DK.WallHaven.csproj" />
+    <ProjectReference Include="..\DK.Wallhaven\DK.Wallhaven.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace DK.WallHaven.App {
+﻿namespace DK.Wallhaven.App {
 
   using System.IO;
 
@@ -12,8 +12,8 @@
 
     public static Config Generate(string rootDirectory) {
       return new Config
-        ( thumbnailDirectory: Path.Combine(rootDirectory, "DK.WallHaven", "Thumbnails")
-        , wallpaperDirectory: Path.Combine(rootDirectory, "DK.WallHaven", "Wallpapers")
+        ( thumbnailDirectory: Path.Combine(rootDirectory, "DK.Wallhaven", "Thumbnails")
+        , wallpaperDirectory: Path.Combine(rootDirectory, "DK.Wallhaven", "Wallpapers")
         );
     }
   }

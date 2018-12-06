@@ -1,4 +1,4 @@
-﻿namespace DK.WallHaven {
+﻿namespace DK.Wallhaven {
 
   using System;
   using System.Linq;
@@ -6,7 +6,7 @@
   public static class ApiFormat {
 
     public static string SearchUrl(SearchParameters p) =>
-      "https://alpha.wallhaven.cc/search?" + string.Join("&", new[] {
+      "https://alpha.Wallhaven.cc/search?" + string.Join("&", new[] {
         FormatParameter(p.query,    "q",          x => x),
         FormatParameter(p.page,     "page",       x => x.ToString()),
         FormatParameter(p.category, "categories", x => Binary((int)x)),
@@ -20,20 +20,20 @@
 
     static string Sorting(Sorting x) {
       switch (x) {
-        case WallHaven.Sorting.Relevance: return "relevance";
-        case WallHaven.Sorting.Random:    return "random";
-        case WallHaven.Sorting.DateAdded: return "date_added";
-        case WallHaven.Sorting.Views:     return "views";
-        case WallHaven.Sorting.Favorites: return "favorites";
-        case WallHaven.Sorting.TopList:   return "toplist";
+        case Wallhaven.Sorting.Relevance: return "relevance";
+        case Wallhaven.Sorting.Random:    return "random";
+        case Wallhaven.Sorting.DateAdded: return "date_added";
+        case Wallhaven.Sorting.Views:     return "views";
+        case Wallhaven.Sorting.Favorites: return "favorites";
+        case Wallhaven.Sorting.TopList:   return "toplist";
         default: throw new ArgumentException(nameof(x));
       }
     }
 
     static string Order(Order x) {
       switch (x) {
-        case WallHaven.Order.Ascending:  return "asc";
-        case WallHaven.Order.Descending: return "desc";
+        case Wallhaven.Order.Ascending:  return "asc";
+        case Wallhaven.Order.Descending: return "desc";
         default: throw new ArgumentException(nameof(x));
       }
     }

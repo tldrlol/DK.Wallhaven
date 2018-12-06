@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DK.WallHaven.App.Properties {
+namespace DK.Wallhaven.App.Properties {
 
 
   /// <summary>
@@ -38,7 +38,7 @@ namespace DK.WallHaven.App.Properties {
     internal static global::System.Resources.ResourceManager ResourceManager {
       get {
         if ((resourceMan == null)) {
-          global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DK.WallHaven.App.Properties.Resources", typeof(Resources).Assembly);
+          global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DK.Wallhaven.App.Properties.Resources", typeof(Resources).Assembly);
           resourceMan = temp;
         }
         return resourceMan;
