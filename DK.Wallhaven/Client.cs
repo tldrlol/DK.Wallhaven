@@ -21,14 +21,16 @@
     }
 
     public async Task<SearchResult[]> Search(SearchParameters parameters) {
-      var doc = await LoadHtmlAsync(ApiFormat.SearchUrl(parameters));
+      var url = ApiFormat.SearchUrl(parameters);
+      var doc = await this.LoadHtmlAsync(url);
 
       return (
         from n in doc.DocumentNode.Descendants()
         where n.GetClasses().Contains("thumb")
+        let id = int.Parse(n.Attributes["data-wallpaper-id"].Value)
         select new SearchResult(
-          id: int.Parse(n.Attributes["data-wallpaper-id"].Value),
-          thumbnailSrc: n.ChildNodes.Single(x => x.Name == "img").Attributes["data-src"].Value
+          id: id,
+          thumbnailSrc: $"https://alpha.wallhaven.cc/wallpapers/thumb/small/th-{id}.jpg"
         )).ToArray();
     }
 
