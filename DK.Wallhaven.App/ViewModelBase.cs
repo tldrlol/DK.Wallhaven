@@ -7,13 +7,24 @@
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    protected void Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null) {
+    protected void CascadingSet<T>(ref T field, T value, string[] cascadingProps, [CallerMemberName] string propertyName = null) {
+      if (this.Set(ref field, value))
+        foreach (var prop in cascadingProps)
+          this.RaisePropertyChanged(prop);
+    }
+
+    protected bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null) {
       if (Equals(field, value))
-        return;
+        return false;
 
       field = value;
-      this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+      this.RaisePropertyChanged(propertyName);
+
+      return true;
     }
+
+    void RaisePropertyChanged(string propertyName) =>
+      this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
   }
 

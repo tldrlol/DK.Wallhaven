@@ -35,9 +35,9 @@
             <ColumnDefinition />
             <ColumnDefinition />
           </Grid.ColumnDefinitions>
-          <CheckBox Grid.Column="0">General</CheckBox>
-          <CheckBox Grid.Column="1">Anime</CheckBox>
-          <CheckBox Grid.Column="2">People</CheckBox>
+          <CheckBox Grid.Column="0" IsChecked="{Binding General}">General</CheckBox>
+          <CheckBox Grid.Column="1" IsChecked="{Binding Anime}">Anime</CheckBox>
+          <CheckBox Grid.Column="2" IsChecked="{Binding People}">People</CheckBox>
         </Grid>
       </GroupBox>
 
@@ -48,9 +48,9 @@
             <ColumnDefinition />
             <ColumnDefinition />
           </Grid.ColumnDefinitions>
-          <CheckBox Grid.Column="0">SFW</CheckBox>
-          <CheckBox Grid.Column="1">Sketchy</CheckBox>
-          <CheckBox Grid.Column="2">NSFW</CheckBox>
+          <CheckBox Grid.Column="0" IsChecked="{Binding SFW}">SFW</CheckBox>
+          <CheckBox Grid.Column="1" IsChecked="{Binding Sketchy}">Sketchy</CheckBox>
+          <CheckBox Grid.Column="2" IsChecked="{Binding NSFW}">NSFW</CheckBox>
         </Grid>
       </GroupBox>
 
