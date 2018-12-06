@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DK.WallHaven", "DK.WallHaven\DK.WallHaven.csproj", "{15BDBEE9-A6C8-48F2-BD1D-BA55F7509C9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DK.WallHaven", "DK.WallHaven\DK.WallHaven.csproj", "{15BDBEE9-A6C8-48F2-BD1D-BA55F7509C9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DK.WallHaven.CLI", "DK.WallHaven.CLI\DK.WallHaven.CLI.csproj", "{87FC54C5-398E-4ED8-9D4F-398E13C3A9A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DK.WallHaven.App", "DK.WallHaven.App\DK.WallHaven.App.csproj", "{5A5F0901-FE13-4AC1-8B60-696B1330A67B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{15BDBEE9-A6C8-48F2-BD1D-BA55F7509C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15BDBEE9-A6C8-48F2-BD1D-BA55F7509C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15BDBEE9-A6C8-48F2-BD1D-BA55F7509C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87FC54C5-398E-4ED8-9D4F-398E13C3A9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87FC54C5-398E-4ED8-9D4F-398E13C3A9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87FC54C5-398E-4ED8-9D4F-398E13C3A9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87FC54C5-398E-4ED8-9D4F-398E13C3A9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5F0901-FE13-4AC1-8B60-696B1330A67B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5F0901-FE13-4AC1-8B60-696B1330A67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5F0901-FE13-4AC1-8B60-696B1330A67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5F0901-FE13-4AC1-8B60-696B1330A67B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
