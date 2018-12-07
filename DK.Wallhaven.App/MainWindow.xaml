@@ -9,8 +9,8 @@
   mc:Ignorable="d"
   x:Class="DK.Wallhaven.App.MainWindow"
   Title="Wallhaven DL"
-  Height="450"
-  Width="800"
+  Height="660"
+  Width="1310"
   d:DataContext="{d:DesignInstance d:Type=local:MainViewModelBase, IsDesignTimeCreatable=True}">
 
   <Window.Resources>
@@ -132,13 +132,24 @@
 
     <ListView Grid.Column="2"
       Margin="10"
-      ItemsSource="{Binding SearchResults}">
-      <ListView.View>
-        <GridView>
-          <GridViewColumn Header="Id"        DisplayMemberBinding="{Binding Id}" />
-          <GridViewColumn Header="Thumbnail" DisplayMemberBinding="{Binding ThumbnailSrc}" />
-        </GridView>
-      </ListView.View>
+      ItemsSource="{Binding Thumbnails}">
+
+      <ListView.ItemsPanel>
+        <ItemsPanelTemplate>
+           <WrapPanel
+              Width="{Binding (FrameworkElement.ActualWidth),  RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+              MinWidth="{Binding ItemWidth,                    RelativeSource={RelativeSource Self}}"
+              ItemWidth="{Binding (ListView.View).ItemWidth,   RelativeSource={RelativeSource AncestorType=ListView}}"
+              ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+        </ItemsPanelTemplate>
+      </ListView.ItemsPanel>
+
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <Image Width="300" Height="200" Source="{Binding Source}"/>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+
     </ListView>
 
   </Grid>

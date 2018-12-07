@@ -45,7 +45,7 @@
       set => this.CascadingSet(ref this.sfw, value, new[] { nameof(this.Purity) });
     }
 
-    bool sketchy = true;
+    bool sketchy;
     public bool Sketchy {
       get => this.sketchy;
       set => this.CascadingSet(ref this.sketchy, value, new[] { nameof(this.Purity) });
@@ -75,10 +75,10 @@
       set => this.Set(ref this.searchCommand, value);
     }
 
-    ObservableCollection<SearchResult> searchResults = new ObservableCollection<SearchResult>();
-    public ObservableCollection<SearchResult> SearchResults {
-      get => this.searchResults;
-      set => this.Set(ref this.searchResults, value);
+    ObservableCollection<ThumbnailViewModel> thumbnails;
+    public ObservableCollection<ThumbnailViewModel> Thumbnails {
+      get => this.thumbnails;
+      set => this.Set(ref this.thumbnails, value);
     }
 
   }

@@ -16,9 +16,10 @@
       EnsureDirectoriesExist(config);
 
       var wallhavenClient = new Client(new HttpClient());
+      var thumbnailManager = new ImageManager(config.thumbnailDirectory, wallhavenClient.Thumbnail);
 
       new MainWindow {
-        DataContext = new MainViewModel(wallhavenClient),
+        DataContext = new MainViewModel(wallhavenClient, thumbnailManager),
       }.Show();
     }
 

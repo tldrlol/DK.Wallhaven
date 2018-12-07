@@ -33,11 +33,10 @@
   }
 
   public class SearchResult {
-    public int Id { get; }
-    public string ThumbnailSrc { get; }
+    public readonly int id;
 
-    public SearchResult(int id, string thumbnailSrc) =>
-      (this.Id, this.ThumbnailSrc) = (id, thumbnailSrc);
+    public SearchResult(int id) =>
+      this.id = id;
   }
 
   public class SearchParameters {
@@ -52,6 +51,7 @@
   public interface IClient {
     Task<SearchResult[]> Search(SearchParameters parameters);
     Task<Stream> Wallpaper(int id);
+    Task<Stream> Thumbnail(int id);
   }
 
 }

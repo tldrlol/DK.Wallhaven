@@ -2,11 +2,12 @@
 
   using System;
   using System.Collections.ObjectModel;
+  using System.Linq;
   using System.Windows;
 
   class MainViewModel : MainViewModelBase {
 
-    public MainViewModel(IClient wallhavenClient) {
+    public MainViewModel(IClient wallhavenClient, IImageManager thumbnailManager) {
 
       var isSearchCommandEnabled = true;
       RelayCommand searchCommand = null;
@@ -17,22 +18,27 @@
             isSearchCommandEnabled = false;
             searchCommand.RaiseCanExecuteChanged();
 
-            this.SearchResults = new ObservableCollection<SearchResult>(
-              await wallhavenClient.Search(new SearchParameters {
-                query    = this.SearchQuery,
-                category = this.Categories,
-                order    = this.Order,
-                purity   = this.Purity,
-                sorting  = this.SortBy,
-            }));
+            var results = await wallhavenClient.Search(new SearchParameters {
+              query    = this.SearchQuery,
+              category = this.Categories,
+              order    = this.Order,
+              purity   = this.Purity,
+              sorting  = this.SortBy,
+            });
+
+            var thumbnailViewModels = results.Select(x => new ThumbnailViewModel(thumbnailManager, x.id));
+
+            this.Thumbnails = new ObservableCollection<ThumbnailViewModel>(thumbnailViewModels);
           }
           catch (Exception e) {
-            MessageBox.Show(e.Message);
+            MessageBox.Show(e.Message, "Oops!");
+            return;
           }
           finally {
             isSearchCommandEnabled = true;
             searchCommand.RaiseCanExecuteChanged();
           }
+
         },
         _ => isSearchCommandEnabled);
 

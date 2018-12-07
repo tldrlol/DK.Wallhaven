@@ -28,10 +28,8 @@
         from n in doc.DocumentNode.Descendants()
         where n.GetClasses().Contains("thumb")
         let id = int.Parse(n.Attributes["data-wallpaper-id"].Value)
-        select new SearchResult(
-          id: id,
-          thumbnailSrc: $"https://alpha.wallhaven.cc/wallpapers/thumb/small/th-{id}.jpg"
-        )).ToArray();
+        select new SearchResult(id: id)
+      ).ToArray();
     }
 
     public async Task<Stream> Wallpaper(int id) {
@@ -42,6 +40,9 @@
         select n.Attributes["src"].Value
       ).First());
     }
+
+    public Task<Stream> Thumbnail(int id) =>
+      this.httpClient.GetStreamAsync($"https://alpha.wallhaven.cc/wallpapers/thumb/small/th-{id}.jpg");
 
   }
 

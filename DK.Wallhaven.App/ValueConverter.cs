@@ -14,6 +14,7 @@
 
     public abstract U Convert(T value);
     public virtual  T ConvertBack(U value) => throw new NotSupportedException();
+
   }
 
 }

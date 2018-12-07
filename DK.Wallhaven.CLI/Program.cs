@@ -11,7 +11,7 @@
       var parameters = new SearchParameters();
       var results = await client.Search(parameters);
       foreach (var r in results)
-        Console.WriteLine(r.ThumbnailSrc);
+        Console.WriteLine(r.id);
     }
 
   }
