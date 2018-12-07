@@ -9,7 +9,7 @@
 
     async void LoadImage(IImageManager thumbnailManager) {
       try {
-        this.Source = await thumbnailManager.GetImage(this.Id);
+        this.Source = await thumbnailManager.Get(this.Id);
       }
       catch {
         // If it fails... what can we do?

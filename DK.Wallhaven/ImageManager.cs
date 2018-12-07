@@ -1,27 +1,25 @@
 ﻿namespace DK.Wallhaven {
 
   using System;
+  using System.Collections.Concurrent;
   using System.IO;
   using System.Threading.Tasks;
-  
-  public interface IImageManager {
-
-    /// <summary>
-    /// Returns a URI to a file containing the given image
-    /// </summary>
-    Task<string> GetImage(int id);
-
-  }
 
   public class ImageManager : IImageManager {
 
     readonly string directory;
     readonly Func<int, Task<Stream>> getImage;
 
+    readonly ConcurrentDictionary<int, Task<string>> requests =
+      new ConcurrentDictionary<int, Task<string>>();
+
     public ImageManager(string directory, Func<int, Task<Stream>> getImage) =>
       (this.directory, this.getImage) = (directory, getImage);
 
-    public async Task<string> GetImage(int id) {
+    public Task<string> Get(int id) =>
+      this.requests.GetOrAdd(id, this.GetImpl);
+
+    async Task<string> GetImpl(int id) {
 
       var path = Path.Combine(this.directory, $"{id}.jpg");
 
