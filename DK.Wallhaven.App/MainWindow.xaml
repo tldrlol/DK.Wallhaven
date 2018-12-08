@@ -152,7 +152,7 @@
                 <MenuItem
                   Header="Set as desktop background"
                   Command="{Binding SetDesktopBackgroundCommand}"
-                  CommandParameter="{Binding Id}" />
+                  CommandParameter="{Binding}" />
               </ContextMenu>
             </Image.ContextMenu>
           </Image>

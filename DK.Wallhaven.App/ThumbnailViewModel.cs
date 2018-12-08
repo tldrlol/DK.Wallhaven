@@ -2,19 +2,8 @@
 
   public class ThumbnailViewModel : ViewModelBase {
 
-    public ThumbnailViewModel(IImageManager thumbnailManager, int id) {
+    public ThumbnailViewModel(int id) =>
       this.Id = id;
-      this.LoadImage(thumbnailManager);
-    }
-
-    async void LoadImage(IImageManager thumbnailManager) {
-      try {
-        this.Source = await thumbnailManager.Get(this.Id);
-      }
-      catch {
-        // If it fails... what can we do?
-      }
-    }
 
     int id;
     public int Id {

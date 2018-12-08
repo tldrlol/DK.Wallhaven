@@ -15,19 +15,19 @@
        | (this.Anime   ? Category.Anime   : 0)
        | (this.People  ? Category.People  : 0);
 
-    bool general = true;
+    bool general;
     public bool General {
       get => this.general;
       set => this.CascadingSet(ref this.general, value, new[] { nameof(this.Categories) } );
     }
 
-    bool anime = true;
+    bool anime;
     public bool Anime {
       get => this.anime;
       set => this.CascadingSet(ref this.anime, value, new[] { nameof(this.Categories) } );
     }
 
-    bool people = true;
+    bool people;
     public bool People {
       get => this.people;
       set => this.CascadingSet(ref this.people, value, new[] { nameof(this.Categories) } );
@@ -38,7 +38,7 @@
        | (this.Sketchy ? Purity.Sketchy : 0)
        | (this.NSFW    ? Purity.NSFW    : 0);
 
-    bool sfw = true;
+    bool sfw;
     public bool SFW {
       get => this.sfw;
       set => this.CascadingSet(ref this.sfw, value, new[] { nameof(this.Purity) });
@@ -56,13 +56,13 @@
       set => this.CascadingSet(ref this.nsfw, value, new[] { nameof(this.Purity) });
     }
 
-    Sorting sortBy = Sorting.Relevance;
+    Sorting sortBy;
     public Sorting SortBy {
       get => this.sortBy;
       set => this.Set(ref this.sortBy, value);
     }
 
-    Order order = Order.Descending;
+    Order order;
     public Order Order {
       get => this.order;
       set => this.Set(ref this.order, value);
@@ -78,6 +78,13 @@
     public ObservableCollection<ThumbnailViewModel> Thumbnails {
       get => this.thumbnails;
       set => this.Set(ref this.thumbnails, value);
+    }
+
+    public MainWindowViewModel() {
+      (this.general, this.anime, this.people) = (true, true, true);
+      (this.sfw, this.sketchy, this.nsfw) = (true, true, false);
+      this.sortBy = Sorting.Relevance;
+      this.order = Order.Descending;
     }
 
   }

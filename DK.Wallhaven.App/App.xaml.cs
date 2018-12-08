@@ -16,11 +16,18 @@
       EnsureDirectoriesExist(config);
 
       var wallhavenClient = new Client(new HttpClient());
-      var thumbnailManager = new ImageManager(config.thumbnailDirectory, wallhavenClient.Thumbnail);
+
+      var downloadThumbnail = Function.Memoize((string s) =>
+        wallhavenClient.Download(config.thumbnailDirectory, s));
+
+      var downloadWallpaper = Function.Memoize(async (int id) => {
+        var result = await wallhavenClient.Wallpaper(id).ConfigureAwait(false);
+        return await wallhavenClient.Download(config.wallpaperDirectory, result.src).ConfigureAwait(false);
+      });
 
       new MainWindow {
         DataContext = new MainWindowViewModel {
-          SearchCommand = new SearchCommand(wallhavenClient, thumbnailManager)
+          SearchCommand = new SearchCommand(wallhavenClient, downloadThumbnail)
         },
       }.Show();
     }

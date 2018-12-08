@@ -34,9 +34,10 @@
 
   public class SearchResult {
     public readonly int id;
+    public readonly string thumbnailSrc;
 
-    public SearchResult(int id) =>
-      this.id = id;
+    public SearchResult(int id, string thumbnailSrc) =>
+      (this.id, this.thumbnailSrc) = (id, thumbnailSrc);
   }
 
   public class SearchParameters {
@@ -48,9 +49,18 @@
     public Order?    order;
   }
 
+  public class WallpaperResult {
+    public readonly string src;
+    public readonly int width;
+    public readonly int height;
+
+    public WallpaperResult(string src, int width, int height) =>
+      (this.src, this.width, this.height) = (src, width, height);
+  }
+
   public interface IClient {
     Task<SearchResult[]> Search(SearchParameters parameters);
-    Task<Stream> Wallpaper(int id);
+    Task<WallpaperResult> Wallpaper(int id);
     Task<Stream> Thumbnail(int id);
   }
 
