@@ -19,7 +19,9 @@
       var thumbnailManager = new ImageManager(config.thumbnailDirectory, wallhavenClient.Thumbnail);
 
       new MainWindow {
-        DataContext = new MainViewModel(wallhavenClient, thumbnailManager),
+        DataContext = new MainWindowViewModel {
+          SearchCommand = new SearchCommand(wallhavenClient, thumbnailManager)
+        },
       }.Show();
     }
 

@@ -4,7 +4,7 @@
 
     public ThumbnailViewModel(IImageManager thumbnailManager, int id) {
       this.Id = id;
-      LoadImage(thumbnailManager);
+      this.LoadImage(thumbnailManager);
     }
 
     async void LoadImage(IImageManager thumbnailManager) {
@@ -22,10 +22,16 @@
       set => this.Set(ref this.id, value);
     }
 
-    string source;
+    string source = "";
     public string Source {
       get => this.source;
       set => this.Set(ref this.source, value);
+    }
+
+    Command<ThumbnailViewModel> setDesktopBackgroundCommand;
+    public Command<ThumbnailViewModel> SetDesktopBackgroundCommand {
+      get => this.setDesktopBackgroundCommand;
+      set => this.Set(ref this.setDesktopBackgroundCommand, value);
     }
 
   }
