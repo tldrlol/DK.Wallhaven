@@ -2,23 +2,26 @@
 
   public class ThumbnailViewModel : ViewModelBase {
 
-    public ThumbnailViewModel(int id) =>
-      this.Id = id;
-
     int id;
     public int Id {
       get => this.id;
       set => this.Set(ref this.id, value);
     }
 
-    string source = "";
-    public string Source {
-      get => this.source;
-      set => this.Set(ref this.source, value);
+    string thumbnailSrc = "";
+    public string ThumbnailSrc {
+      get => this.thumbnailSrc;
+      set => this.Set(ref this.thumbnailSrc, value);
     }
 
-    Command<ThumbnailViewModel> setDesktopBackgroundCommand;
-    public Command<ThumbnailViewModel> SetDesktopBackgroundCommand {
+    string thumbnailPath = "";
+    public string ThumbnailPath {
+      get => this.thumbnailPath;
+      set => this.Set(ref this.thumbnailPath, value);
+    }
+
+    Command<int> setDesktopBackgroundCommand;
+    public Command<int> SetDesktopBackgroundCommand {
       get => this.setDesktopBackgroundCommand;
       set => this.Set(ref this.setDesktopBackgroundCommand, value);
     }

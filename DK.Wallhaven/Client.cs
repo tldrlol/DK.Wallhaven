@@ -39,12 +39,12 @@
     }
 
     public async Task<WallpaperResult> Wallpaper(int id) {
-      var doc = await LoadHtmlAsync($"https://alpha.wallhaven.cc/wallpaper/{id}").ConfigureAwait(false);
+      var doc = await this.LoadHtmlAsync($"https://alpha.wallhaven.cc/wallpaper/{id}").ConfigureAwait(false);
 
       var wallpaper = doc.DocumentNode.Descendants()
-        .Single(x => x.Id == "wallpaper");
+        .Single(x => x.Id == "wallpaper" && x.Attributes["src"] != null);
 
-      var src    =           wallpaper.Attributes["src"].Value;
+      var src    = "https:" + wallpaper.Attributes["src"].Value;
       var width  = int.Parse(wallpaper.Attributes["data-wallpaper-width"].Value);
       var height = int.Parse(wallpaper.Attributes["data-wallpaper-height"].Value);
 

@@ -63,10 +63,12 @@
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="OrderDisplayConverter.cs" />
     <Compile Include="SearchCommand.cs" />
+    <Compile Include="SetDesktopWallpaperCommand.cs" />
     <Compile Include="SortingDisplayConverter.cs" />
     <Compile Include="ThumbnailViewModel.cs" />
     <Compile Include="ValueConverter.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Compile Include="WallpaperService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

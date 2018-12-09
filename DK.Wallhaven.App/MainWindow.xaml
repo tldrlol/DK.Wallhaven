@@ -137,22 +137,19 @@
       <ListView.ItemsPanel>
         <ItemsPanelTemplate>
            <WrapPanel
-              Width="{Binding (FrameworkElement.ActualWidth),  RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
-              MinWidth="{Binding ItemWidth,                    RelativeSource={RelativeSource Self}}"
-              ItemWidth="{Binding (ListView.View).ItemWidth,   RelativeSource={RelativeSource AncestorType=ListView}}"
-              ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+              Width="{Binding (FrameworkElement.ActualWidth),  RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}" />
         </ItemsPanelTemplate>
       </ListView.ItemsPanel>
 
       <ListView.ItemTemplate>
         <DataTemplate>
-          <Image Width="300" Height="200" Source="{Binding Source}">
+          <Image Width="300" Height="200" Source="{Binding ThumbnailPath}">
             <Image.ContextMenu>
               <ContextMenu>
                 <MenuItem
-                  Header="Set as desktop background"
-                  Command="{Binding SetDesktopBackgroundCommand}"
-                  CommandParameter="{Binding}" />
+                  Header="Set as desktop _background"
+                  CommandParameter="{Binding DataContext.Id, RelativeSource={RelativeSource Self}}"
+                  Command="{Binding SetDesktopBackgroundCommand}" />
               </ContextMenu>
             </Image.ContextMenu>
           </Image>

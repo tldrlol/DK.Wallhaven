@@ -27,7 +27,10 @@
 
       new MainWindow {
         DataContext = new MainWindowViewModel {
-          SearchCommand = new SearchCommand(wallhavenClient, downloadThumbnail)
+          SearchCommand = new SearchCommand(
+            wallhavenClient,
+            downloadThumbnail,
+            new SetDesktopBackgroundCommand(downloadWallpaper))
         },
       }.Show();
     }
